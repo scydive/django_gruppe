@@ -1,5 +1,4 @@
 """mysite URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
@@ -15,10 +14,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import get_cars
-from .views import save_car
-from .views import update_car
-from .views import delete_car
+from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +22,14 @@ urlpatterns = [
     path("save_car/", save_car),
     path("update_car/<int:id>", update_car),
     path("delete_car/<int:id>", delete_car),
+    path('get_customers/', get_customers),
+    path('save_customer', save_customer),
+    path('delete_customer', delete_customer),
+    path('update_customer', update_customer),
+    path('order_car/<int:id>/<int:id2>', order_car),
+    path('get_employees', get_employees),
+    path('update_employee/<int:id>', update_employee),
+    path('delete_employee/<int:id>', delete_employee),
+    path('save_employee', save_employee),
 ]
+
