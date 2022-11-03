@@ -7,17 +7,20 @@ class Car(models.Model):
     year = models.IntegerField('year')
     location = models.CharField(max_length=30)
     status = models.CharField(max_length=50)
+    rented_by = models.CharField(max_length=50, default="none")
 
 class Employee(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
     branch = models.CharField(max_length=50)
 
+
 class Customer(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
     age = models.IntegerField('age')
     booked = models.CharField(max_length=50)
+    renting = models.IntegerField(default=0)
 
 
 

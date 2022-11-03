@@ -31,5 +31,6 @@ urlpatterns = [
     path('update_employee/<int:id>', update_employee),
     path('delete_employee/<int:id>', delete_employee),
     path('save_employee', save_employee),
+    path('cancel_order/<int:id>/<int:id2>', cancel_order),
 ]
 

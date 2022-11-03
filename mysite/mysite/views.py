@@ -79,13 +79,13 @@ def delete_customer(request, id):
 
 @api_view(["PUT"])
 def order_car(request, id, id2):
-    serializer = CustomerSerializer(data=request.data)
     try:
         theCustomer = Customer.objects.get(pk=id)
         theCar = Car.objects.get(pk=id2)
     except Customer.DoesNotExist or Car.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if theCustomer.booked == "no" and theCar.status == "available":
+        theCustomer.renting = theCar.id
         theCustomer.booked = "yes"
         theCar.status = "booked"
         theCustomer.save()
@@ -93,6 +93,24 @@ def order_car(request, id, id2):
         return Response(status=status.HTTP_200_OK)
     else:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["PUT"])
+def cancel_order(request, id, id2):
+    try:
+        theCustomer = Customer.objects.get(pk=id)
+        theCar = Car.objects.get(pk=id2)
+    except Customer.DoesNotExist or Car.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if theCustomer.booked == "yes" and theCustomer.renting == theCar.id:
+        theCustomer.booked = "no"
+        theCustomer.renting = 0
+        theCar.status = "available"
+        theCar.save()
+        theCustomer.save()
+        return Response(status=status.HTTP_200_OK)
+    else:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET'])
 def get_employees(request):
