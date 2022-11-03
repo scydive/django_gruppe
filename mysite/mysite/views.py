@@ -135,6 +135,8 @@ def return_car(request, id, id2, state):
     if theCar.status == "rented" and theCustomer.renting == theCar.id:
         if state == "damaged":
             theCar.status = "damaged"
+            theCustomer.renting = 0
+            theCustomer.save()
             theCar.save()
             return Response(status=status.HTTP_200_OK)
         elif state == "ok":
