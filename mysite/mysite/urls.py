@@ -32,5 +32,7 @@ urlpatterns = [
     path('delete_employee/<int:id>', delete_employee),
     path('save_employee', save_employee),
     path('cancel_order/<int:id>/<int:id2>', cancel_order),
+    path('rent_car/<int:id>/<int:id2>', rent_car),
+    path('return_car/<int:id>/<int:id2>/<str:state>', return_car),
 ]
 
