@@ -27,8 +27,6 @@ jobs:
    name: Build and push
    uses: docker/build-push-action@v3
    with:
-    run: |
-     cd mysite
     context: .
     file: Dockerfile
     push: true
