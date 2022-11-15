@@ -1,0 +1,5 @@
+absl-py==1.0.0
+asgiref==3.5.0
+Django==4.0.1
+djangorestframework==3.14.0
+sqlparse==0.4.2
