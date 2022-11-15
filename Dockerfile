@@ -2,7 +2,7 @@ FROM python:3.11-rc-bullseye
 
 ENV PYTHONBUFFERED 1
 
-WORKDIR /app
+WORKDIR ./mysite
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
