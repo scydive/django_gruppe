@@ -28,6 +28,6 @@ jobs:
    uses: docker/build-push-action@v3
    with:
     context: .
-    file: ./Dockerfile
+    file: ./mysite/Dockerfile
     push: true
     tags: ${{ secrets.DOCKERHUB_USERNAME }}/django-docker:latest
